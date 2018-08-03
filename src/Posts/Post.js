@@ -9,7 +9,7 @@ export default class Post extends Component {
       <Query
         query={POST_QUERY}
         variables={{
-          id: match.params.id,
+          id: match.params.id
         }}
       >
         {({ data, loading }) => {
@@ -17,7 +17,13 @@ export default class Post extends Component {
 
           const { post } = data;
 
-          return <h1>{post.title}</h1>;
+          return (
+            <div>
+              <section>
+                <h1>{post.title}</h1>
+              </section>
+            </div>
+          );
         }}
       </Query>
     );
