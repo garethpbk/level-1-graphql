@@ -7,8 +7,16 @@ import Posts from './Posts/Posts';
 import NewPost from './Posts/NewPost';
 import './App.css';
 
+const defaultState = {
+  isEditMode: false,
+};
+
 const client = new ApolloClient({
   uri: 'https://api-uswest.graphcms.com/v1/cjk962bvc16tf01d2rl12ial4/master',
+  clientState: {
+    defaults: defaultState,
+    resolvers: {},
+  },
 });
 
 // client
@@ -29,13 +37,13 @@ class App extends Component {
               </Link>
             </header>
 
-            <Link to="/post/new">New Post</Link>
-
-            <Switch>
-              <Route exact path="/" component={Posts} />
-              <Route exact path="/post/new" component={NewPost} />
-              <Route path="/post/:id" component={Post} />
-            </Switch>
+            <main>
+              <Switch>
+                <Route exact path="/" component={Posts} />
+                <Route exact path="/post/new" component={NewPost} />
+                <Route path="/post/:id" component={Post} />
+              </Switch>
+            </main>
           </div>
         </Router>
       </ApolloProvider>
